@@ -19,24 +19,23 @@ NorthWind es un sistema de gestión comercial para una empresa distribuidora int
 
 ## Estructura del repositorio
 
-La solución está organizada en tres carpetas principales que separan claramente el modelo transaccional, el modelo analítico y el paquete de despliegue:
-DisenioDBDataWarehouse/
-├── README.md
-├── OLTP/
-│   ├── 01_create_database.sql
-│   ├── 02_create_tables.sql
-│   ├── 03_insert_data.sql
-│   └── diagrama_ER.png
-├── DW/
-│   ├── 01_create_dw.sql
-│   ├── 02_dimensiones.sql
-│   ├── 03_fact_table.sql
-│   ├── 04_etl_procedures.sql
-│   └── diagrama_estrella.png
-└── DACPAC/
-└── NorthWindDW.dacpac
+La solución está organizada en tres carpetas principales:
 
----
+    DisenioDBDataWarehouse/
+    ├── README.md
+    ├── OLTP/
+    │   ├── 01_create_database.sql
+    │   ├── 02_create_tables.sql
+    │   ├── 03_insert_data.sql
+    │   └── diagrama_ER.png
+    ├── DW/
+    │   ├── 01_create_dw.sql
+    │   ├── 02_dimensiones.sql
+    │   ├── 03_fact_table.sql
+    │   ├── 04_etl_procedures.sql
+    │   └── diagrama_estrella.png
+    └── DACPAC/
+        └── NorthWindDW.dacpac
 
 ## Modelo OLTP
 
@@ -44,7 +43,8 @@ DisenioDBDataWarehouse/
 
 El siguiente diagrama representa el modelo físico de la base de datos NorthWind, generado a partir del esquema implementado en SQL Server. Muestra las 14 tablas del sistema, sus atributos, claves primarias, claves foráneas y las relaciones de integridad referencial entre ellas.
 
-![Diagrama ER NorthWind](OLTP/diagrama_ER.png)
+![Diagrama ER NorthWind](<img width="1028" height="803" alt="Captura de pantalla 2026-05-04 194435" src="https://github.com/user-attachments/assets/cb63fed5-50ef-4e81-b196-2ff94a9176e7" />
+)
 
 ### Entidades principales
 
