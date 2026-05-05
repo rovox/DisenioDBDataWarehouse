@@ -43,8 +43,7 @@ La solución está organizada en tres carpetas principales:
 
 El siguiente diagrama representa el modelo físico de la base de datos NorthWind, generado a partir del esquema implementado en SQL Server. Muestra las 14 tablas del sistema, sus atributos, claves primarias, claves foráneas y las relaciones de integridad referencial entre ellas.
 
-![Diagrama ER NorthWind](<img width="1028" height="803" alt="Captura de pantalla 2026-05-04 194435" src="https://github.com/user-attachments/assets/cb63fed5-50ef-4e81-b196-2ff94a9176e7" />
-)
+![Diagrama ER NorthWind](OLTP/diagrama_ER.png)
 
 ### Entidades principales
 
