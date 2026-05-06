@@ -15,6 +15,14 @@ Proyecto académico desarrollado en SQL Server que implementa un modelo de base 
 
 NorthWind es un sistema de gestión comercial para una empresa distribuidora internacional de alimentos y bebidas. El sistema cubre el ciclo completo de ventas, desde la administración del catálogo de productos y la gestión de clientes, hasta el procesamiento de pedidos, la coordinación con proveedores y el seguimiento de envíos a través de transportistas externos. Como parte de este proyecto se diseñó un modelo OLTP completamente normalizado en Tercera Forma Normal (3FN) y un Data Warehouse en esquema estrella orientado al análisis histórico de ventas.
 
+Resumen de dominio de negocio de Northwind desglosado:
+- **Sector**: Distribución mayorista de productos alimenticios
+- **Entidades principales**: Clientes, Productos, Empleados, Órdenes, Proveedores
+- **Reglas de negocio**:
+  - Cada orden pertenece a un cliente y es atendida por un empleado
+  - Un producto pertenece a una categoría y tiene un proveedor
+  - Las órdenes tienen múltiples líneas de detalle (producto, cantidad, precio, descuento)
+  - El precio extendido = Quantity × UnitPrice × (1 - Discount)
 ---
 
 ## Estructura del repositorio
