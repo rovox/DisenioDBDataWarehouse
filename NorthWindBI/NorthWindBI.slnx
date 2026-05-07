@@ -1,0 +1,16 @@
+<Solution>
+  <Folder Name="/Databases/" />
+  <Folder Name="/Databases/DataWarehouse/">
+    <Project Path="NorthWindDW/NorthWindDW.sqlproj" Id="143bc1aa-31be-4883-89a3-5b638c9e7f6d">
+      <Build />
+      <Deploy />
+    </Project>
+  </Folder>
+  <Folder Name="/Databases/OLTP/">
+    <Project Path="NorthWindOLTP/NorthWindOLTP.sqlproj" Id="44e322e8-ea3c-49b4-a66a-4b069621bc90">
+      <Build />
+      <Deploy />
+    </Project>
+  </Folder>
+  <Folder Name="/ETL/" />
+</Solution>
