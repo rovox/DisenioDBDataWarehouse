@@ -6,13 +6,13 @@
 
 ## 👥 Integrantes del grupo
 
-| Nombre |
-|--------|
-| Jorge Felix Zientarki Balderrama |
-| Jose Roberto Vargas Orellana |
-| Ismael Peralta Fernandez |
-| Lizbeth Hualca Yavi |
-| Maria Yesica Sanchez Calle |
+| Nombre | usuario |
+|--------|--------- |
+| Jorge Félix Zientarski Balderrama | cocozien |
+| José Roberto Vargas Orellana | rovox |
+| Ismael Peralta Fernandez | Isma9000 |
+| Lizbeth Hualca Yavi | LizbethHY |
+| Maria Yesica Sanchez Calle | YesicaSc2 |
 
 ---
 

@@ -1,8 +1,7 @@
 
 /*
 DW Northwind - esquema analítico orientado a ventas
-Base OLTP: Northwind (ajusta el nombre si tu BD se llama distinto)
-Autor: ChatGPT
+Base OLTP: Northwind
 
 Estrategia:
 - Esquema dw
@@ -15,8 +14,18 @@ IF NOT EXISTS (SELECT 1 FROM sys.schemas WHERE name = 'dw')
 GO
 
 -- Limpieza opcional
+-- revisar orden las fk
+-- 1. Eliminar Vistas (si existen)
+IF OBJECT_ID('dw.vw_SalesMonthly', 'V') IS NOT NULL DROP VIEW dw.vw_SalesMonthly;
+
+-- 2. Eliminar las Tablas de Hechos (Hijos)
 IF OBJECT_ID('dw.FactSalesLine', 'U') IS NOT NULL DROP TABLE dw.FactSalesLine;
+IF OBJECT_ID('dw.FactOrderHeader', 'U') IS NOT NULL DROP TABLE dw.FactOrderHeader; -- ¡Esta era la que faltaba!
+
+-- 3. Eliminar Dimensiones con dependencias (DimProduct depende de Supplier y Category)
 IF OBJECT_ID('dw.DimProduct', 'U') IS NOT NULL DROP TABLE dw.DimProduct;
+
+-- 4. Eliminar Dimensiones Base (Padres)
 IF OBJECT_ID('dw.DimSupplier', 'U') IS NOT NULL DROP TABLE dw.DimSupplier;
 IF OBJECT_ID('dw.DimCategory', 'U') IS NOT NULL DROP TABLE dw.DimCategory;
 IF OBJECT_ID('dw.DimShipper', 'U') IS NOT NULL DROP TABLE dw.DimShipper;
@@ -178,17 +187,24 @@ GO
    Ajusta el nombre de la BD OLTP si no es NorthWind.
 */
 
--- DimDate: rango basado en pedidos
+-- DimDate: rango basado en la fecha mínima y máxima de CUALQUIER evento del pedido
 DECLARE @MinDate date, @MaxDate date;
-SELECT
-    @MinDate = ISNULL(MIN(CONVERT(date, OrderDate)), '1996-01-01'),
-    @MaxDate = ISNULL(MAX(CONVERT(date, ShippedDate)), '1998-12-31')
-FROM Northwind.dbo.Orders; -- ojo: si tu BD se llama Northwind, cambia NorthWind por Northwind
 
--- Corrección por posible error de nombre de columna
-IF @MaxDate IS NULL
-    SELECT @MaxDate = ISNULL(MAX(CONVERT(date, ShippedDate)), '1998-12-31')
-    FROM Northwind.dbo.Orders;
+SELECT 
+    @MinDate = MIN(dt), 
+    @MaxDate = MAX(dt)
+FROM (
+    SELECT CONVERT(date, OrderDate) AS dt FROM Northwind.dbo.Orders
+    UNION
+    SELECT CONVERT(date, RequiredDate) FROM Northwind.dbo.Orders
+    UNION
+    SELECT CONVERT(date, ShippedDate) FROM Northwind.dbo.Orders
+) AS TodasLasFechas
+WHERE dt IS NOT NULL;
+
+-- Asignar valores por defecto en caso de que la tabla de origen esté vacía
+SET @MinDate = ISNULL(@MinDate, '1996-01-01');
+SET @MaxDate = ISNULL(@MaxDate, '1998-12-31');
 
 ;WITH d AS (
     SELECT @MinDate AS dt
