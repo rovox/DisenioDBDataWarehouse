@@ -1,16 +1,28 @@
 <Solution>
+  <Configurations>
+    <BuildType Name="Debug" />
+    <BuildType Name="Development" />
+    <BuildType Name="Release" />
+  </Configurations>
   <Folder Name="/Databases/" />
   <Folder Name="/Databases/DataWarehouse/">
     <Project Path="NorthWindDW/NorthWindDW.sqlproj" Id="143bc1aa-31be-4883-89a3-5b638c9e7f6d">
+      <BuildType Solution="Development|*" Project="Release" />
       <Build />
       <Deploy />
     </Project>
   </Folder>
   <Folder Name="/Databases/OLTP/">
-    <Project Path="NorthWindOLTP/NorthWindOLTP.sqlproj" Id="44e322e8-ea3c-49b4-a66a-4b069621bc90">
+    <Project Path="NorthWindOLTP/NorthWindOLTP.sqlproj" Id="caf2afa8-3a5d-4ba5-8c14-fcda0631dcb5">
+      <BuildType Solution="Development|*" Project="Release" />
       <Build />
       <Deploy />
     </Project>
   </Folder>
-  <Folder Name="/ETL/" />
+  <Folder Name="/ETL/">
+    <Project Path="NorthWindETL/NorthWindETL.dtproj" Type="c9674dcb-5085-4a16-b785-4c70dd1589bd">
+      <BuildType Project="Development" />
+      <Platform Project="?" />
+    </Project>
+  </Folder>
 </Solution>
