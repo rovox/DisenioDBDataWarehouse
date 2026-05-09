@@ -1,5 +1,6 @@
 ﻿CREATE TABLE [staging].[ShipLocation] (
     [ShipLocationSK] INT           NULL,
+    [OrderID]        INT           NULL,
     [ShipName]       NVARCHAR (40) NULL,
     [ShipAddress]    NVARCHAR (60) NULL,
     [ShipCity]       NVARCHAR (15) NULL,

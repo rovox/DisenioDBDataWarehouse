@@ -1,5 +1,4 @@
 ﻿CREATE TABLE [staging].[Sales] (
-    [SalesKey]        BIGINT   NULL,
     [OrderID]         INT      NOT NULL,
     [ProductID]       INT      NOT NULL,
     [OrderDateKey]    INT      NULL,

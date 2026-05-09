@@ -17,7 +17,6 @@ BEGIN
     ,c.[Country]
     ,c.[Phone]
     ,c.[Fax]
-    ,c.[rowversion]
     ,g.[CustomerDesc]
   FROM 
     [dbo].[Customers] c

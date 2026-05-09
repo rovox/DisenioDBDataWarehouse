@@ -1,5 +1,6 @@
 ﻿CREATE TABLE [dbo].[DimShipLocation] (
     [ShipLocationSK] INT           IDENTITY (1, 1) NOT NULL,
+    [OrderID]        INT           NULL,
     [ShipName]       NVARCHAR (40) NULL,
     [ShipAddress]    NVARCHAR (60) NULL,
     [ShipCity]       NVARCHAR (15) NULL,

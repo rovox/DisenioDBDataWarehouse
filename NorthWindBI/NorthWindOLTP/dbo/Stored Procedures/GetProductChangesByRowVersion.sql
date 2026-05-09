@@ -8,14 +8,20 @@ AS
 BEGIN
   SELECT p.[ProductID]
       ,p.[ProductName]
-      ,s.[CompanyName]
-      ,c.[CategoryName]
       ,p.[QuantityPerUnit]
       ,p.[UnitPrice]
       ,p.[UnitsInStock]
       ,p.[UnitsOnOrder]
       ,p.[ReorderLevel]
       ,p.[Discontinued]
+      ,c.[CategoryName]
+      ,c.[Description]
+      ,s.[CompanyName]
+      ,s.[ContactName]
+      ,s.[ContactTitle]
+      ,s.[City]
+      ,s.[Region]
+      ,s.[Country]
   FROM 
 	[dbo].[Products] p
 	INNER JOIN [dbo].[Categories] c ON p.CategoryID=c.CategoryID

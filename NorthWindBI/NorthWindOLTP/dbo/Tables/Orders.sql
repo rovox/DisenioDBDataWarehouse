@@ -2,10 +2,10 @@
     [OrderID]        INT           IDENTITY (1, 1) NOT NULL,
     [CustomerID]     NCHAR (5)     NULL,
     [EmployeeID]     INT           NULL,
-    [OrderDate]      DATETIME      NULL,
-    [RequiredDate]   DATETIME      NULL,
-    [ShippedDate]    DATETIME      NULL,
-    [ShipVia]        INT           NULL,
+    [OrderDate]      DATE          NULL,
+    [RequiredDate]   DATE          NULL,
+    [ShippedDate]    DATE          NULL,
+    [ShipperID]      INT           NULL,
     [Freight]        MONEY         CONSTRAINT [DF_Orders_Freight] DEFAULT ((0)) NULL,
     [ShipName]       NVARCHAR (40) NULL,
     [ShipAddress]    NVARCHAR (60) NULL,
@@ -17,7 +17,7 @@
     CONSTRAINT [PK_Orders] PRIMARY KEY CLUSTERED ([OrderID] ASC),
     CONSTRAINT [FK_Orders_Customers] FOREIGN KEY ([CustomerID]) REFERENCES [dbo].[Customers] ([CustomerID]),
     CONSTRAINT [FK_Orders_Employees] FOREIGN KEY ([EmployeeID]) REFERENCES [dbo].[Employees] ([EmployeeID]),
-    CONSTRAINT [FK_Orders_Shippers] FOREIGN KEY ([ShipVia]) REFERENCES [dbo].[Shippers] ([ShipperID])
+    CONSTRAINT [FK_Orders_Shippers] FOREIGN KEY ([ShipperID]) REFERENCES [dbo].[Shippers] ([ShipperID])
 );
 
 
@@ -53,7 +53,7 @@ CREATE NONCLUSTERED INDEX [ShippedDate]
 
 GO
 CREATE NONCLUSTERED INDEX [ShippersOrders]
-    ON [dbo].[Orders]([ShipVia] ASC);
+    ON [dbo].[Orders]([ShipperID] ASC);
 
 
 GO
