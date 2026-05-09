@@ -9,6 +9,9 @@
 *.userosscache
 *.sln.docstates
 
+*.dbmdl
+*.jfm
+
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/
